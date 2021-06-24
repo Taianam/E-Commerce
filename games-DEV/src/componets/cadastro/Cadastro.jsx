@@ -1,14 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import TextField from '@material-ui/core/TextField';
 import styled from "styled-components";
 import api from '../../service/api';
+import {makeStyles} from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import {Link} from 'react-router-dom';
 
 const Estilo = styled.div`
     border-radius: 0.8rem;
     background: rgba( 225, 225, 255, 0.5);
     color: black;`
 
-export default function FormPropsTextFields() {
+
+    const useStyles = makeStyles((theme) => ({
+      root: {
+        display: "flex",
+        flexWrap: "wrap"
+      },
+      margin: {
+        margin: theme.spacing(1)
+      }
+    }));
+
+export default function CustomizedInputs() {
+  const classes = useStyles();
 
   const [newNome, setNewNome] = useState('');
   const [newDataDeNascimento, setNewDataDeNascimento] = useState('');
@@ -45,64 +59,80 @@ export default function FormPropsTextFields() {
 
   return (
  
-    <form autoComplete="off" onSubmit={handleSubmit}>
+    <form autoComplete="off" onSubmit={handleSubmit} className={classes.root} noValidate>
         <Estilo>
             <div>   
                 <h1>Cadastro</h1>
-                <TextField required id="standard-nome-input" 
+                <TextField className={classes.margin} required id="standard-nome-input" 
                 name="Nome"
                 label="Nome completo"
+                variant="outlined"
+                id="mui-theme-provider-outlined-input"
                 value={newNome}
                 onChange={n => setNewNome(n.target.value)}
 
                 />
 
-                <TextField id="standard-data-input" 
+                <TextField className={classes.margin} id="standard-data-input" 
                 label="Data de Nascimento" 
+                variant="outlined"
+                id="mui-theme-provider-outlined-input"
                 value={newDataDeNascimento}
                 onChange={data => setNewDataDeNascimento(data.target.value)}
                 />
 
-                <TextField
+                <TextField className={classes.margin}
                 id="standard-telefone-input"
                 label="Telefone"
+                variant="outlined"
+                id="mui-theme-provider-outlined-input"
                 type="string"
                 value={newTelefone}
                 onChange={telefone => setNewTelefone(telefone.target.value)}
                 />
 
-                <TextField
+                <TextField className={classes.margin}
                 id="standard-cpf-input"
                 label="Cpf"
+                variant="outlined"
+                id="mui-theme-provider-outlined-input"
                 type="string"
                 value={newCpf}
                 onChange={cpf => setNewCpf(cpf.target.value)}
                 />
 
 
-                <TextField id="standard-email-input" 
+                <TextField className={classes.margin} id="standard-email-input" 
                 label="E-mail"
+                variant="outlined"
+                id="mui-theme-provider-outlined-input"
                 value={newEmail}
                 onChange={email => setNewEmail(email.target.value)}
                 />
 
-                <TextField
+                <TextField className={classes.margin}
                 id="standard-password-input"
                 label="Senha"
+                variant="outlined"
+                id="mui-theme-provider-outlined-input"
                 type="password"
                 value={newSenha}
                 onChange={senha => setNewSenha(senha.target.value)}
                 />
 
-                <TextField
+                <TextField className={classes.margin}
                 id="standard-cep-input"
                 label="Cep"
+                variant="outlined"
+                id="mui-theme-provider-outlined-input"
                 type="string"
                 value={newCep}
                 onChange={cep => setNewCep(cep.target.value)}
                 />
-                
-                <button type='submit'>Enviar</button>
+
+                <Link to="/home" className={classes.link} >
+                  <button type='submit'>Enviar</button>
+                </Link>
             </div>
         </Estilo>
     </form>
