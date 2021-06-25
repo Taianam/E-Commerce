@@ -54,7 +54,7 @@ function Home() {
       <Filtro>
         <input
           type="text"
-          placeholder="Ditige um gamer"
+          placeholder="Pesquise um jogo "
           onChange={e => filtrarProduto(e.target.value)} />
           <span>
             <BsSearch size={28} style={{color: '#fff'}}/>
