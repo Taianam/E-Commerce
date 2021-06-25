@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import api from '../../../service/api'
 import TabelaProduto from './TabelaProduto'
 import Modal_ from '../../modal/modal';
-import { MdAddCircleOutline} from 'react-icons/md';
+import { MdAddCircleOutline } from 'react-icons/md';
 import { Container, Nav } from './Styles';
 import CadastraProduto from '../../cadastro/cadastroProduto/CadastroProduto'
 import CustomizedBreadcrumbs from '../../nav/Nav'
@@ -19,12 +19,12 @@ function CrudProdutos() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  
 
-  useEffect(() => { 
+
+  useEffect(() => {
     obterProduto()
-    obterCategoria() 
-  },[])
+    obterCategoria()
+  }, [])
 
   const obterProduto = () => {
     api.get(`/produtos`).then((response) => {
@@ -40,37 +40,35 @@ function CrudProdutos() {
       setCategoria(response.data)
     })
   }
-  
+
   const atualizaPoduto = (id) => {
     api.put(`/produtos/${id}`, produtoApi).then((response) => {
       obterProduto()
     })
   }
 
- 
+
 
   return (
     <>
-   <Nav>  <CustomizedBreadcrumbs  /></Nav>
-    <Container>
-    
-      <h1>Controle de Produtos</h1>
-      <Modal_ 
-        button={
-          <button className="btnCadastrar"> 
-            Cadastrar
-            <MdAddCircleOutline size={20} style={{marginLeft: 5}}/> 
-          </button>} 
-        content={
-          <CadastraProduto 
-          categoria={categoria}
-          obterProduto={obterProduto}
+      <Nav>  <CustomizedBreadcrumbs /></Nav>
+      <Container>
+
+        <h1>Controle de Produtos</h1>
+        <Modal_
+          button={
+            <button className="btnCadastrar">
+              Cadastrar
+              <MdAddCircleOutline size={20} style={{ marginLeft: 5 }} />
+            </button>}>
+          <CadastraProduto
+            categoria={categoria}
+            obterProduto={obterProduto}
           />
-        }
-      />
-      <TabelaProduto produtos={produtos} />
-      <Footer />
-    </Container>
+        </Modal_ >
+        <TabelaProduto produtos={produtos} />
+        <Footer />
+      </Container>
     </>
   )
 }

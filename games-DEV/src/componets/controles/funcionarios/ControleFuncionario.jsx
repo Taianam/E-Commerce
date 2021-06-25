@@ -1,7 +1,15 @@
+
 import React, { useEffect, useState } from 'react'
 import api from '../../../service/api'
+import TabelaProduto from './TabelaCliente'
+import Modal_ from '../../modal/modal';
+import { MdAddCircleOutline} from 'react-icons/md';
+import { Container, Nav } from './Styles';
+import CadastraProduto from '../../cadastro/cadastroProduto/CadastroProduto'
+import CustomizedBreadcrumbs from '../../nav/Nav'
+import Footer from '../../footer/footer';
 
-function ControleClientes(){
+function ControleFuncionario(){
     const [clientes, setClientes] = useState('');
     const [newNome, setNewNome] = useState('');
     const [newDataDeNascimento, setNewDataDeNascimento] = useState('');
@@ -48,10 +56,30 @@ function ControleClientes(){
     }
 
     return (
-        <div>
-            <h1>Lista de Clientes:</h1>
+
+               <>
+           <Nav>  <CustomizedBreadcrumbs  /></Nav>
+            <Container>
             
-            
-        </div>
-    )
+              <h1>Controle de Funcionario</h1>
+              <Modal_ 
+                button={
+                  <button className="btnCadastrar"> 
+                    Cadastrar
+                    <MdAddCircleOutline size={20} style={{marginLeft: 5}}/> 
+                  </button>} 
+                content={
+                  <CadastraProduto 
+                  categoria={categoria}
+                  obterProduto={obterProduto}
+                  />
+                }
+              />
+              <TabelaProduto produtos={produtos} />
+              <Footer />
+            </Container>
+            </>
+          )
 }
+
+export default ControleFuncionario

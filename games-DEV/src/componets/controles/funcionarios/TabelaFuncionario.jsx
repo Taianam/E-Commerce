@@ -4,9 +4,8 @@ import { FaTrashRestoreAlt} from 'react-icons/fa';
 import { MdSystemUpdateAlt } from 'react-icons/md'
 import styled from "styled-components";
 import Modal_ from '../../modal/modal';
-import api from '../../../service/api';
 
-function TabelaProduto({produtos}){
+function TabelaProduto({cliente}){
     const Estilo = styled.div`
         
         margin: 3%;
@@ -14,17 +13,8 @@ function TabelaProduto({produtos}){
         color:white;
       
     `;
-const [produto, setProduto] = useState([]);
 
-    const obterProduto = () => {
-      api.get(`/produtos`).then((response) => {
-        console.log(response.status);
-        console.log(response.data);
-        setProduto(response.data)
-      })
-    }
-
-const deletarProduto = (id) => {
+const deletarCliente = (id) => {
   api.delete(`/produtos/${id}`).then(() => {
     obterProduto()
   })
@@ -32,7 +22,6 @@ const deletarProduto = (id) => {
     
     const columns = [
         { field: 'id', headerName: 'ID', width: 70 },
-        { field: 'imagem', headerName: 'Imagem', width: 130 },
         { field: 'nome', headerName: 'Nome', width: 180 },
         { field: 'descricao', headerName: 'Descrição', width: 210 },
         { field: 'estoque', headerName: 'Estoque', width: 129 },
@@ -56,14 +45,14 @@ const deletarProduto = (id) => {
           estoque: produto.estoque, 
           preco: produto.preco,
           dataDeCadastro: produto.dataDeCadastro,
-          deletar: <button  onClick={(produto)=>deletarProduto(produto.id)}><FaTrashRestoreAlt/></button> , 
+          deletar: <FaTrashRestoreAlt />, 
           atualizar: <Modal_ button={<MdSystemUpdateAlt/>} />}
       ));
   
   return(
     <Estilo>
       <div style={{ height: 500, width: '100%' }}>
-        <DataGrid rows={rows} columns={columns} pageSize={10} />
+        <DataGrid rows={rows} columns={columns} pageSize={10} checkboxSelection/>
       </div>
     </Estilo>
   )

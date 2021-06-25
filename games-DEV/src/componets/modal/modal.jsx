@@ -12,13 +12,21 @@ function Modal_(props) {
   const useStyles = makeStyles((theme) => ({
     paper: {
       position: 'fixed',
+      zIndex: '7 !important',
       width: 600,
-      zIndex: 9,
       backgroundColor: theme.palette.background.paper,
       border: '2px solid #000',
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
     },
+    root: {
+      position: 'fixed',
+     ,
+      right: '0px',
+      bottom: '0px',
+      top: '0px',
+      left: '0px'
+    }
   }));
 
   function getModalStyle() {
@@ -51,9 +59,9 @@ function Modal_(props) {
       <Modal
         open={open}
         onClose={handleClose}
-      >
+        style={{zIndex: '7 !important' }}>
         <Container>
-          {props.content}
+          {props.children}
         </Container>
       </Modal>
     </div>

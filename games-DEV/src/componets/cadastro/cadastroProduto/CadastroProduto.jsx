@@ -18,11 +18,7 @@ function CadastroProduto({categoria, obterProduto}) {
 
   const salvarProduto = (e) => {
     e.preventDefault();
-    Swal.fire('Cadastro realizado com sucesso!', {
-      customClass: {
-        container: 'my-swal'
-      }
-    })
+    Swal.fire('Cadastro realizado com sucesso!')
    /* setLoading(true)
     const objProduto = {
       nome: newNome,

@@ -17,7 +17,7 @@ export const Container = styled.div`
     font-size: 17px;
   }
 
-  .my-swal {
-    z-index: 300000!important;
+  .myswal2 {
+    z-index: 30000000 !important;
   }
 `
