@@ -35,4 +35,23 @@ function ControleClientes(){
 
     React.useEffect(obterClienter(), []);
 
+    const atualizaCliente = (id) => {
+        api.put(`/clientes/${id}`).then(() => {
+            obterCliente();
+        })
+    }
+
+    const deletarCliente = (id) => {
+        api.delete(`/clientes/${id}`).then(() => {
+            obterCliente();
+        })
+    }
+
+    return (
+        <div>
+            <h1>Lista de Clientes:</h1>
+            
+            
+        </div>
+    )
 }
