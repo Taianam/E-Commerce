@@ -1,18 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import api from '../../service/api';
+import {Link} from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    flexWrap: "wrap"
-  },
-  margin: {
-    margin: theme.spacing(1)
-  }
-}));
+const Estilo = styled.div`
+    border-radius: 0.8rem;
+    background: rgba( 225, 225, 255, 0.5);
+    color: black;`
 
+
+    const useStyles = makeStyles((theme) => ({
+      root: {
+        flexGrow: 1,
+      },
+      margin: {
+        margin: theme.spacing(1)
+      },
+      paper: {
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+      },
+    }));
+    
 export default function CustomizedInputs() {
 
     const [newNome, setNewNome] = useState('');
@@ -52,78 +65,103 @@ export default function CustomizedInputs() {
 
 
   return (
-    <form className={classes.root} noValidate onSubmit={handleSubmit}>
-      <TextField
-        className={classes.margin}
-        label="Nome"
-        variant="outlined"
-        type="string"
-        id="mui-theme-provider-outlined-input"
-        value={newNome}
-        onChange={n => setNewNome(n.target.value)}
-      />
+    <form autoComplete="off" onSubmit={handleSubmit} className={classes.root} noValidate>
+        
+        <Estilo>
+            <div>   
+                <h1>Cadastro</h1>
+                
+                <Grid item xs={12}>
+                  <Paper className={classes.paper}><TextField className={classes.margin} required id="standard-nome-input" 
+                    name="Nome"
+                    label="Nome completo"
+                    variant="outlined"
+                    id="mui-theme-provider-outlined-input"
+                    value={newNome}
+                    onChange={n => setNewNome(n.target.value)}
+                /></Paper>               
+                </Grid>
+                
+                <Grid item xs={12}>
+                  <Paper className={classes.paper}><TextField className={classes.margin} id="standard-data-input" 
+                    label="Data de Nascimento" 
+                    variant="outlined"
+                    id="mui-theme-provider-outlined-input"
+                    value={newDataDeNascimento}
+                    onChange={data => setNewDataDeNascimento(data.target.value)}
+                  /></Paper>
+                </Grid>
 
-      <TextField
-        className={classes.margin}
-        label="Data de Nascimento"
-        variant="outlined"
-        type="string"
-        id="mui-theme-provider-outlined-input"
-        value={newDataDeNascimento}
-                onChange={data => setNewDataDeNascimento(data.target.value)}
-      />
+                <Grid item xs={12}>
+                  <Paper className={classes.paper}><TextField className={classes.margin}
+                    id="standard-telefone-input"
+                    label="Telefone"
+                    variant="outlined"
+                    id="mui-theme-provider-outlined-input"
+                    type="string"
+                    value={newTelefone}
+                    onChange={telefone => setNewTelefone(telefone.target.value)}
+                  /></Paper>
+                </Grid>
+                
+                <Grid item xs={12}>
+                  <Paper className={classes.paper}><TextField className={classes.margin}
+                    id="standard-cpf-input"
+                    label="Cpf"
+                    variant="outlined"
+                    id="mui-theme-provider-outlined-input"
+                    type="string"
+                    value={newCpf}
+                    onChange={cpf => setNewCpf(cpf.target.value)}
+                  /></Paper>
+                </Grid>
 
-      <TextField
-        className={classes.margin}
-        label="Telefone"
-        variant="outlined"
-        type="string"
-        id="mui-theme-provider-outlined-input"
-        value={newTelefone}
-        onChange={telefone => setNewTelefone(telefone.target.value)}
-      />
+                <Grid item xs={12}>
+                  <Paper className={classes.paper}><TextField className={classes.margin} id="standard-email-input" 
+                    label="E-mail"
+                    variant="outlined"
+                    id="mui-theme-provider-outlined-input"
+                    value={newEmail}
+                    onChange={email => setNewEmail(email.target.value)}
+                  /></Paper>
+                </Grid>
 
-      <TextField
-        className={classes.margin}
-        label="Cpf"
-        variant="outlined"
-        type="string"
-        id="mui-theme-provider-outlined-input"
-        value={newCpf}
-        onChange={cpf => setNewCpf(cpf.target.value)}
-      />
+                <Grid item xs={12}>
+                  <Paper className={classes.paper}><TextField className={classes.margin}
+                    id="standard-password-input"
+                    label="Senha"
+                    variant="outlined"
+                    id="mui-theme-provider-outlined-input"
+                    type="password"
+                    value={newSenha}
+                    onChange={senha => setNewSenha(senha.target.value)}
+                  /></Paper>
+                </Grid>
 
-      <TextField
-        className={classes.margin}
-        label="Email"
-        variant="outlined"
-        type="string"
-        id="mui-theme-provider-outlined-input"
-        value={newEmail}
-        onChange={email => setNewEmail(email.target.value)}
-      />
+                <Grid item xs={12}>
+                  <Paper className={classes.paper}><TextField className={classes.margin}
+                    id="standard-cep-input"
+                    label="Cep"
+                    variant="outlined"
+                    id="mui-theme-provider-outlined-input"
+                    type="string"
+                    value={newCep}
+                    onChange={cep => setNewCep(cep.target.value)}
+                  /></Paper>
+                </Grid>
 
-      <TextField
-        className={classes.margin}
-        label="Senha"
-        variant="outlined"
-        type="password"
-        id="mui-theme-provider-outlined-input"
-        value={newSenha}
-        onChange={senha => setNewSenha(senha.target.value)}
-      />
+                <Grid item xs={12}>
+                  <Paper className={classes.paper}><Link to="/home" className={classes.link} >
+                  <Button variant="contained" color="primary" >
+                    Cadastrar
+                  </Button>
+                </Link></Paper>
+                </Grid>
 
-      <TextField
-        className={classes.margin}
-        label="Cep"
-        variant="outlined"
-        type="string"
-        id="mui-theme-provider-outlined-input"
-        value={newCep}
-        onChange={cep => setNewCep(cep.target.value)}
-      />
-
-      <button type='submit' >Enviar</button>
+                
+            </div>
+        </Estilo>
+        
     </form>
   );
 }
