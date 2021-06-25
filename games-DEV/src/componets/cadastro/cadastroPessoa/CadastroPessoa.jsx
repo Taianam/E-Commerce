@@ -7,6 +7,8 @@ import {Link} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import CustomizedBreadcrumbs from '../../nav/Nav'
+import { Container, Nav, Filtro } from '../../home/Styles';
 
 const Estilo = styled.div`
     border-radius: 0.8rem;
@@ -65,10 +67,14 @@ export default function CadastroCliente() {
   }
 
   return (
+
+    
+
     <form autoComplete="off" onSubmit={handleSubmit} className={classes.root} noValidate>
         
         <Estilo>
             <div>   
+              <Nav> <CustomizedBreadcrumbs /></Nav>
                 <h1>Cadastro</h1>
                 
                 <Grid item xs={12}>

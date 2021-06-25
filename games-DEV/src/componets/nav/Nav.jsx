@@ -5,6 +5,7 @@ import Chip from '@material-ui/core/Chip';
 import HomeIcon from '@material-ui/icons/Home';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Link } from 'react-router-dom';
+import { FaWhatsapp } from 'react-icons/fa';
 
 const StyledBreadcrumb = withStyles((theme) => ({
   root: {
@@ -23,30 +24,40 @@ const StyledBreadcrumb = withStyles((theme) => ({
   },
 }))(Chip); // TypeScript only: need a type cast here because https://github.com/Microsoft/TypeScript/issues/26591
 
-function handleClick(event) {
-  event.preventDefault();
-  console.info('You clicked a breadcrumb.');
-}
 
 export default function CustomizedBreadcrumbs() {
   return (
     <Breadcrumbs aria-label="breadcrumb">
-      <Link to="/">
+      <Link to="/home">
         <StyledBreadcrumb
           component="a"
           href="#"
           label="Home 🎮"
           icon={<HomeIcon fontSize="small" />}
-          onClick={handleClick}
         />
       </Link>
-      <StyledBreadcrumb component="a" href="#" label="Produtos 🕹️ " onClick={handleClick} />
-      <StyledBreadcrumb
-        label="Outros 🏁"
-        deleteIcon={<ExpandMoreIcon />}
-        onClick={handleClick}
-        onDelete={handleClick}
-      />
+
+      <Link to="/controle/produtos">
+        <StyledBreadcrumb
+          component="a" 
+          href="#" 
+          label="Produtos 🕹️ "  />
+      </Link>
+
+      <Link to="/cadastroPessoa">
+        <StyledBreadcrumb
+          component="a"
+          href="#"
+          label="Cadastro 🧙"  />
+      </Link>
+
+      <Link to="/">
+        <StyledBreadcrumb
+          component="a"
+          href="#"
+          label="Sair 🚪" />
+      </Link>
+
     </Breadcrumbs>
   );
 }
