@@ -8,10 +8,14 @@ import NotfoundProduto from '../notfound/produtoNotFound/ProdutoNotFound';
 import Loading from '../loading/loading';
 import { BsSearch } from 'react-icons/bs';
 import Slide from '../carrossel/Slide';
+import Carrinho from '../carrinho/Carrinho'
+
+
 function Home() {
   const [produtos, setProdutos] = useState([]);
   const [produtosFiltrado, setProdutosFiltrado] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [carrinho, setCarrinho] = React.useState([]);
 
   const obterProduto = () => {
     setLoading(true)
@@ -44,12 +48,18 @@ function Home() {
     }
   }
 
+  const handleComprar = (id) => {
+    setCarrinho ((anterior) => [...anterior, id])
+    console.log(carrinho);
+  }
+
   return (
     <Container>
       {loading && 
         <Loading />
       }
-      <Nav> <CustomizedBreadcrumbs /></Nav>
+
+      <Nav > <CustomizedBreadcrumbs carrinho={carrinho.length}/></Nav>
       <Slide/>
       <Filtro>
         <input
@@ -65,7 +75,7 @@ function Home() {
           <div className="produtos">
             {produtosFiltrado.map((p) =>
               <div key={p.id}>
-                <Card produto={p} />
+                <Card produto={p} comprar={handleComprar}/>
               </div>)
             }
           </div>

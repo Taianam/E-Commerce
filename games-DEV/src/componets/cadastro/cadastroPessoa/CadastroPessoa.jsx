@@ -3,7 +3,7 @@ import styled from "styled-components";
 import api from '../../../service/api';
 import {makeStyles} from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import {Link} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -12,7 +12,6 @@ const Estilo = styled.div`
     border-radius: 0.8rem;
     background: rgba( 225, 225, 255, 0.5);
     color: black;`
-
 
     const useStyles = makeStyles((theme) => ({
       root: {
@@ -28,7 +27,7 @@ const Estilo = styled.div`
       },
     }));
     
-export default function CadastroCliente() {
+export default function CadastroPessoa() {
   const classes = useStyles();
 
   const [newNome, setNewNome] = useState('');
@@ -50,22 +49,23 @@ export default function CadastroCliente() {
           cep: newCep,
       }
     };
-
+  
+  let history = useHistory();
+  
   const handleSubmit = (event) =>{ 
         event.preventDefault()
         api.post(`/clientes`, cliente).then(() => {
-        setNewNome(" ");
-        setNewDataDeNascimento(" ");
-        setNewTelefone(" ");
-        setNewCpf(" ");
-        setNewEmail(" ");
-        setNewSenha(" ");
-        setNewCep(" ");
+        
+        history.push("/home")
+
     })
   }
 
+
+
+
   return (
-    <form autoComplete="off" onSubmit={handleSubmit} className={classes.root} noValidate>
+    <form autoComplete="off" onSubmit={handleSubmit} className={classes.root}>
         
         <Estilo>
             <div>   
@@ -77,6 +77,7 @@ export default function CadastroCliente() {
                     label="Nome completo"
                     variant="outlined"
                     id="mui-theme-provider-outlined-input"
+                    type="string"
                     value={newNome}
                     onChange={n => setNewNome(n.target.value)}
                 /></Paper>               
@@ -87,6 +88,7 @@ export default function CadastroCliente() {
                     label="Data de Nascimento" 
                     variant="outlined"
                     id="mui-theme-provider-outlined-input"
+                    type="string"
                     value={newDataDeNascimento}
                     onChange={data => setNewDataDeNascimento(data.target.value)}
                   /></Paper>
@@ -152,7 +154,7 @@ export default function CadastroCliente() {
 
                 <Grid item xs={12}>
                   <Paper className={classes.paper}>
-                  <Button variant="contained" color="primary" >
+                  <Button type='submit' variant="contained" color="primary">
                     Cadastrar
                   </Button>
                 </Paper>
