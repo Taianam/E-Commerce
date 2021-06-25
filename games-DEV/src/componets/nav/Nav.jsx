@@ -6,6 +6,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Link } from 'react-router-dom';
 import Carrinho from '../carrinho/Carrinho'
+import styled from "styled-components";
 
 const StyledBreadcrumb = withStyles((theme) => ({
   root: {
@@ -22,52 +23,39 @@ const StyledBreadcrumb = withStyles((theme) => ({
       backgroundColor: emphasize(theme.palette.grey[300], 0.12),
     },
   },
+
 }))(Chip); // TypeScript only: need a type cast here because https://github.com/Microsoft/TypeScript/issues/26591
 
-function handleClick(event) {
-  event.preventDefault();
-  console.info('You clicked a breadcrumb.');
-}
+const Sai = styled(Link) `
+    text-decoration: none;`
 
 export default function CustomizedBreadcrumbs(props) {
   return (
     <Breadcrumbs aria-label="breadcrumb">
-      <Link to="/home">
-        <StyledBreadcrumb
-          component="a"
-          href="#"
-          label="Home 🎮"
-          icon={<HomeIcon fontSize="small" />}
-          onClick={handleClick}
-        />
-      </Link>
-      <Link to="/controle/produtos">
-        <StyledBreadcrumb
-          component="a" 
-          href="#" 
-          label="Produtos 🕹️ "  />
-      </Link>
-      <Link to="/cadastroPessoa">
-        <StyledBreadcrumb
-          component="a"
-          href="#"
-          label="Cadastro 🧙"  />
-      </Link>
-      <Link to="/home">
-        <StyledBreadcrumb
-          component="a"
-          href="#"
-          label="Funcionários 🤖"
-          onClick={handleClick}
+        <Sai to="/home">
+          <StyledBreadcrumb
+            label="Home 🎮"
+            icon={<HomeIcon fontSize="small" />}
           />
-          </Link>
-      <Link to="/">
+        </Sai>
+        <Sai to="/controle/produtos">
+          <StyledBreadcrumb
+            label="Produtos 🕹️ "  />
+        </Sai>
+        <Sai to="/cadastroPessoa">
+          <StyledBreadcrumb
+            label="Cadastro 🧙"  />
+        </Sai>
+        <Sai to="#">
         <StyledBreadcrumb
-          component="a"
-          href="#"
-          label="Sair 🚪" />
-      </Link>
-    
+            label="Funcionários 🤖"
+            />
+            </Sai>
+        <Sai to="/login">
+          <StyledBreadcrumb
+            label="Sair 🚪" />
+        </Sai>
+      
       <Carrinho total={props.carrinho} />
     </Breadcrumbs>
   );

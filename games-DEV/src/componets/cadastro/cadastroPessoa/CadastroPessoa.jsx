@@ -27,6 +27,9 @@ const Estilo = styled.div`
         textAlign: 'center',
         color: theme.palette.text.secondary,
       },
+      h1: {
+        textAlign: 'center'
+      }
     }));
     
 export default function CadastroPessoa() {
@@ -71,7 +74,7 @@ export default function CadastroPessoa() {
         
         <Estilo>
             <div>   
-                <h1>Cadastro</h1>
+                <h1 className={classes.h1}>Cadastro</h1>
                 
                 <Grid item xs={12}>
                   <Paper className={classes.paper}><TextField className={classes.margin} required id="standard-nome-input" 
