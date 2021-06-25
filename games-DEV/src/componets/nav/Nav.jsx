@@ -45,19 +45,19 @@ export default function CustomizedBreadcrumbs(props) {
         <StyledBreadcrumb
           component="a" 
           href="#" 
-          label="Produtos :joystick: "  />
+          label="Produtos 🕹️ "  />
       </Link>
       <Link to="/cadastroPessoa">
         <StyledBreadcrumb
           component="a"
           href="#"
-          label="Cadastro :mage:"  />
+          label="Cadastro 🧙"  />
       </Link>
       <Link to="/">
         <StyledBreadcrumb
           component="a"
           href="#"
-          label="Sair :door:" />
+          label="Sair 🚪" />
       </Link>
       <Carrinho total={props.carrinho} />
     </Breadcrumbs>
