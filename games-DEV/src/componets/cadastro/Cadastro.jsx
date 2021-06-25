@@ -4,6 +4,7 @@ import api from '../../service/api';
 import {makeStyles} from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import {Link} from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 const Estilo = styled.div`
     border-radius: 0.8rem;
@@ -131,7 +132,9 @@ export default function CustomizedInputs() {
                 />
 
                 <Link to="/home" className={classes.link} >
-                  <button type='submit'>Enviar</button>
+                  <Button variant="contained" color="primary" >
+                    Cadastrar
+                  </Button>
                 </Link>
             </div>
         </Estilo>
