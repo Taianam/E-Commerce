@@ -40,10 +40,10 @@ function Footer() {
   	 		<div class="footer-col">
   	 			<h4>Siga a gente!</h4>
   	 			<div class="social-links">
-  	 				<a href="#"><FaFacebookF /></a>
-  	 				<a href="#"><FaTwitter /></a>
-  	 				<a href="#"><FaInstagram /></a>
-  	 				<a href="#"><FaWhatsapp /></a>
+  	 				<a href="https://www.facebook.com/" target="_blank"><FaFacebookF /></a>
+  	 				<a href="https://twitter.com/home" target="_blank"><FaTwitter /></a>
+  	 				<a href="https://www.instagram.com/" target="_blank"><FaInstagram /></a>
+  	 				<a href="https://web.whatsapp.com/" target="_blank"><FaWhatsapp /></a>
   	 			</div>
   	 		</div>
   	 	</div>
