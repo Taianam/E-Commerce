@@ -19,7 +19,7 @@ function CadastroProduto({categoria, obterProduto}) {
   const salvarProduto = (e) => {
     e.preventDefault();
     Swal.fire('Cadastro realizado com sucesso!')
-   /* setLoading(true)
+    setLoading(true)
     const objProduto = {
       nome: newNome,
       descricao: newDescricao,
@@ -44,8 +44,7 @@ function CadastroProduto({categoria, obterProduto}) {
         title: 'Oops...',
         text: 'Erro ao cadastrar o produto'
       })
-    });*/
-
+    });
   }
 
   function limparInputs() {

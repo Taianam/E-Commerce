@@ -6,7 +6,7 @@ import styled from "styled-components";
 import Modal_ from '../../modal/modal';
 import api from '../../../service/api';
 
-function TabelaProduto({produtos}){
+function TabelaProduto({produtos, obterProduto}){
     const Estilo = styled.div`
         
         margin: 3%;
@@ -56,7 +56,8 @@ const deletarProduto = (id) => {
           estoque: produto.estoque, 
           preco: produto.preco,
           dataDeCadastro: produto.dataDeCadastro,
-          deletar: <button  onClick={(produto)=>deletarProduto(produto.id)}><FaTrashRestoreAlt/></button> , 
+          deletar: <button onClick={()=>deletarProduto(produto.id)}>
+          <FaTrashRestoreAlt/></button>, 
           atualizar: <Modal_ button={<MdSystemUpdateAlt/>} />}
       ));
   

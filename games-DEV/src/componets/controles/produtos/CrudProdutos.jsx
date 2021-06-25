@@ -10,16 +10,12 @@ import Footer from '../../footer/footer';
 
 function CrudProdutos() {
 
-
   const [produtos, setProduto] = useState([]);
   const [categoria, setCategoria] = useState([]);
-
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-
 
   useEffect(() => {
     obterProduto()
@@ -47,13 +43,10 @@ function CrudProdutos() {
     })
   }
 
-
-
   return (
     <>
       <Nav>  <CustomizedBreadcrumbs /></Nav>
       <Container>
-
         <h1>Controle de Produtos</h1>
         <Modal_
           button={
@@ -66,7 +59,10 @@ function CrudProdutos() {
             obterProduto={obterProduto}
           />
         </Modal_ >
-        <TabelaProduto produtos={produtos} />
+        <TabelaProduto 
+          produtos={produtos} 
+          obterProduto={obterProduto}
+        />
         <Footer />
       </Container>
     </>

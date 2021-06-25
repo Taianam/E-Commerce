@@ -18,14 +18,6 @@ function Modal_(props) {
       border: '2px solid #000',
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
-    },
-    root: {
-      position: 'fixed',
-     ,
-      right: '0px',
-      bottom: '0px',
-      top: '0px',
-      left: '0px'
     }
   }));
 
