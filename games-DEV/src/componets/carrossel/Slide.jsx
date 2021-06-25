@@ -7,7 +7,7 @@ let slides = [
     <img  src="../../assets/Xbox.JPG" alt="2" />  ,
     <img  src="../../assets/ratchet.JPG" alt="3" />  ,
     <img  src="../../assets/zelda.JPG" alt="4" />  ,
-    <img  src="https://picsum.photos/800/304/?random" alt="5" />   ];
+    <img  src="../../assets/nintendogamesdev.jpg" alt="5" />   ];
 
 function Slide() {
     return (

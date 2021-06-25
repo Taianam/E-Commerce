@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
+import { Container } from './Styles'
 
 function Modal_(props) {
 
@@ -50,7 +51,9 @@ function Modal_(props) {
         open={open}
         onClose={handleClose}
       >
-        <div> Inferrrno </div>
+        <Container>
+          {props.content}
+        </Container>
       </Modal>
     </div>
   )

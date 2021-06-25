@@ -3,32 +3,23 @@ import api from '../../../service/api'
 import TabelaProduto from './TabelaProduto'
 import Modal_ from '../../modal/modal';
 import { MdAddCircleOutline} from 'react-icons/md';
-import { Container } from './Styles'
+import { Container, Nav } from './Styles';
+import CadastraProduto from '../../cadastro/cadastroProduto/CadastroProduto'
+import CustomizedBreadcrumbs from '../../nav/Nav'
+import Footer from '../../footer/footer';
 
 function CrudProdutos() {
+
+
   const [produtos, setProduto] = useState([]);
   const [categoria, setCategoria] = useState([]);
-  const [newNome, setNewNome] = useState();
-  const [newDescricao, setNewDescricao] = useState();
-  const [newEstoque, setNewEstoque] = useState();
-  const [newPreco, setNewPreco] = useState();
-  const [newIDCategoria, setNewIDCategoria] = useState();
-  const [newDataDeCadastro, setNewDataDeCadastro] = useState();
-  const [newImagem, setNewImagem] = useState('');
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const produtoApi = {
-    nome: newNome,
-    descricao: newDescricao,
-    estoque: newEstoque,
-    preco: newPreco,
-    categoria: newIDCategoria,
-    dataDeCadastro: newDataDeCadastro,
-    imagem: newImagem,
-  }
+  
 
   useEffect(() => { 
     obterProduto() 
@@ -48,19 +39,7 @@ function CrudProdutos() {
       setCategoria(response.data)
     })
   }
-  const salvarProduto = (id) => {
-    api.post(`/produtos/${id}`, produtoApi).then((response) => {
-      setNewNome(" ");
-      setNewDescricao(" ");
-      setNewEstoque(" ");
-      setNewPreco(" ");
-      setNewIDCategoria(" ");
-      setNewDataDeCadastro(" ");
-      setNewImagem(" ");
-      obterProduto();
-    });
-
-  }
+  
   const atualizaPoduto = (id) => {
     api.put(`/produtos/${id}`, produtoApi).then((response) => {
       obterProduto()
@@ -74,7 +53,10 @@ function CrudProdutos() {
   }
 
   return (
+    <>
+   <Nav>  <CustomizedBreadcrumbs  /></Nav>
     <Container>
+    
       <h1>Controle de Produtos</h1>
       <Modal_ 
         button={
@@ -82,9 +64,12 @@ function CrudProdutos() {
             Cadastrar
             <MdAddCircleOutline size={20} style={{marginLeft: 5}}/> 
           </button>} 
+        content={<CadastraProduto/>}
       />
       <TabelaProduto produtos={produtos} />
+      <Footer />
     </Container>
+    </>
   )
 }
 
