@@ -16,14 +16,6 @@ function TabelaProduto({produtos, obterProduto}){
     `;
 const [produto, setProduto] = useState([]);
 
-    const obterProduto = () => {
-      api.get(`/produtos`).then((response) => {
-        console.log(response.status);
-        console.log(response.data);
-        setProduto(response.data)
-      })
-    }
-
 const deletarProduto = (id) => {
   api.delete(`/produtos/${id}`).then(() => {
     obterProduto()
