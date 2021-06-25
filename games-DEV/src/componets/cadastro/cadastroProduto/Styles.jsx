@@ -8,12 +8,16 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
 
-  input{
+  input, select{
     width: 400px;
     padding: 5px;
     border: 1px solid #ccc;
     margin: 7px 0;
     height: 35px;
     font-size: 17px;
+  }
+
+  .my-swal {
+    z-index: 300000!important;
   }
 `

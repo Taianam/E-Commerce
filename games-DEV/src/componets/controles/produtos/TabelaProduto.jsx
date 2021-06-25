@@ -13,6 +13,12 @@ function TabelaProduto({produtos}){
         color:white;
       
     `;
+
+const deletarProduto = (id) => {
+  api.delete(`/produtos/${id}`).then(() => {
+    obterProduto()
+  })
+}
     
     const columns = [
         { field: 'id', headerName: 'ID', width: 70 },

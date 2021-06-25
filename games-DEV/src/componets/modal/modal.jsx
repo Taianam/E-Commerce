@@ -11,8 +11,9 @@ function Modal_(props) {
 
   const useStyles = makeStyles((theme) => ({
     paper: {
-      position: 'absolute',
+      position: 'fixed',
       width: 600,
+      zIndex: 9,
       backgroundColor: theme.palette.background.paper,
       border: '2px solid #000',
       boxShadow: theme.shadows[5],

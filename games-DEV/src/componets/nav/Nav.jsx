@@ -31,7 +31,7 @@ function handleClick(event) {
 export default function CustomizedBreadcrumbs() {
   return (
     <Breadcrumbs aria-label="breadcrumb">
-      <Link to="/">
+      <Link to="/home">
         <StyledBreadcrumb
           component="a"
           href="#"

@@ -22,7 +22,8 @@ function CrudProdutos() {
   
 
   useEffect(() => { 
-    obterProduto() 
+    obterProduto()
+    obterCategoria() 
   },[])
 
   const obterProduto = () => {
@@ -46,11 +47,7 @@ function CrudProdutos() {
     })
   }
 
-  const deletarProduto = (id) => {
-    api.delete(`/produtos/${id}`).then(() => {
-      obterProduto()
-    })
-  }
+ 
 
   return (
     <>
@@ -64,7 +61,12 @@ function CrudProdutos() {
             Cadastrar
             <MdAddCircleOutline size={20} style={{marginLeft: 5}}/> 
           </button>} 
-        content={<CadastraProduto/>}
+        content={
+          <CadastraProduto 
+          categoria={categoria}
+          obterProduto={obterProduto}
+          />
+        }
       />
       <TabelaProduto produtos={produtos} />
       <Footer />
