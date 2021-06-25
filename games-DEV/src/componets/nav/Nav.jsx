@@ -26,35 +26,35 @@ const StyledBreadcrumb = withStyles((theme) => ({
 
 }))(Chip); // TypeScript only: need a type cast here because https://github.com/Microsoft/TypeScript/issues/26591
 
-const Sai = styled(Link) `
+const Barra = styled(Link) `
     text-decoration: none;`
 
 export default function CustomizedBreadcrumbs(props) {
   return (
     <Breadcrumbs aria-label="breadcrumb">
-        <Sai to="/home">
+        <Barra to="/home">
           <StyledBreadcrumb
             label="Home 🎮"
             icon={<HomeIcon fontSize="small" />}
           />
-        </Sai>
-        <Sai to="/controle/produtos">
+        </Barra>
+        <Barra to="/controle/produtos">
           <StyledBreadcrumb
             label="Produtos 🕹️ "  />
-        </Sai>
-        <Sai to="/cadastroPessoa">
+        </Barra>
+        <Barra to="/cadastroPessoa">
           <StyledBreadcrumb
             label="Cadastro 🧙"  />
-        </Sai>
-        <Sai to="#">
+        </Barra>
+        <Barra to="#">
         <StyledBreadcrumb
             label="Funcionários 🤖"
             />
-            </Sai>
-        <Sai to="/login">
+            </Barra>
+        <Barra to="/login">
           <StyledBreadcrumb
             label="Sair 🚪" />
-        </Sai>
+        </Barra>
       
       <Carrinho total={props.carrinho} />
     </Breadcrumbs>
