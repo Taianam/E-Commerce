@@ -45,19 +45,13 @@ export default function CustomizedBreadcrumbs(props) {
         <StyledBreadcrumb
           component="a" 
           href="#" 
-          label="Produtos :joystick: "  />
+          label="Produtos 🕹️ "  />
       </Link>
       <Link to="/cadastroPessoa">
         <StyledBreadcrumb
           component="a"
           href="#"
-          label="Cadastro :mage:"  />
-      </Link>
-      <Link to="/">
-        <StyledBreadcrumb
-          component="a"
-          href="#"
-          label="Sair :door:" />
+          label="Cadastro 🧙"  />
       </Link>
       <Link to="/home">
         <StyledBreadcrumb
@@ -67,6 +61,13 @@ export default function CustomizedBreadcrumbs(props) {
           onClick={handleClick}
           />
           </Link>
+      <Link to="/">
+        <StyledBreadcrumb
+          component="a"
+          href="#"
+          label="Sair 🚪" />
+      </Link>
+    
       <Carrinho total={props.carrinho} />
     </Breadcrumbs>
   );
