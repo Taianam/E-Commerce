@@ -15,7 +15,7 @@ function Card(props) {
         <img id="imagem" src={imagem} alt="" />
         <p>{descricao}</p>
       </div>
-      <div className="info2">
+      <div className="comprar">
         <p>Preço: {preco}</p>
         <button type="button">Comprar</button>
       </div>

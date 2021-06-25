@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import{FiDelete, FiCheckCircle} from 'react-icons/fi'
-import { Cadastrar, Tasks } from './styles'
 import api from '../../../service/api'
-
+import TabelaProduto from './TabelaProduto'
+import Modal_ from '../../modal/modal';
+import { MdAddCircleOutline} from 'react-icons/md';
+import { Container } from './Styles'
 
 function CrudProdutos() {
   const [produtos, setProduto] = useState([]);
@@ -14,8 +15,12 @@ function CrudProdutos() {
   const [newIDCategoria, setNewIDCategoria] = useState();
   const [newDataDeCadastro, setNewDataDeCadastro] = useState();
   const [newImagem, setNewImagem] = useState('');
+  const [show, setShow] = useState(false);
 
-const produtoApi={
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const produtoApi = {
     nome: newNome,
     descricao: newDescricao,
     estoque: newEstoque,
@@ -23,17 +28,17 @@ const produtoApi={
     categoria: newIDCategoria,
     dataDeCadastro: newDataDeCadastro,
     imagem: newImagem,
+  }
 
-}
+  useEffect(() => { 
+    obterProduto() 
+  },[])
 
-useEffect(() => {obterProduto() }, [])
-
-const obterProduto = () => {
+  const obterProduto = () => {
     api.get(`/produtos`).then((response) => {
       console.log(response.status);
       console.log(response.data);
       setProduto(response.data)
-
     })
   }
   const obterCategoria = () => {
@@ -41,71 +46,46 @@ const obterProduto = () => {
       console.log(response.status);
       console.log(response.data);
       setCategoria(response.data)
-
     })
   }
-  const  salvarProduto= (id)=>{ 
-      api.post(`/produtos/${id}`, produtoApi).then((response)=>{
+  const salvarProduto = (id) => {
+    api.post(`/produtos/${id}`, produtoApi).then((response) => {
+      setNewNome(" ");
+      setNewDescricao(" ");
+      setNewEstoque(" ");
+      setNewPreco(" ");
+      setNewIDCategoria(" ");
+      setNewDataDeCadastro(" ");
+      setNewImagem(" ");
+      obterProduto();
+    });
 
-        setNewNome(" ");
-        setNewDescricao(" ");
-        setNewEstoque(" ");
-        setNewPreco(" ");
-        setNewIDCategoria(" ");
-        setNewDataDeCadastro(" ");
-        setNewImagem(" ");
-        obterProduto();
-        
-      });  
-
-}
-const  atualizaPoduto= (id)=>{
-  
-        api.put(`/produtos/${id}`, produtoApi).then((response) => {
-    
-        obterProduto()
+  }
+  const atualizaPoduto = (id) => {
+    api.put(`/produtos/${id}`, produtoApi).then((response) => {
+      obterProduto()
     })
-}
+  }
 
-const  deletarProduto=(id)=>{     
-     api.delete(`/produtos/${id}` ).then(() => {
-    
-     obterProduto()})
-
-}
-
+  const deletarProduto = (id) => {
+    api.delete(`/produtos/${id}`).then(() => {
+      obterProduto()
+    })
+  }
 
   return (
-
-    <div>
-            <h1>Lista de produtos</h1>
-            <Cadastrar>
-            <input 
-                type="text" value={newNome}
-                placeholder="Seu nome"
-                onChange={e => setNewNome(e.target.value)}
-            />
-            <button type="button">Criar</button>
-            </Cadastrar>
-            <Tasks>
-            {produtos.map((p) => (
-                <div key={p.id} ><strong>{p.nome}</strong>
-                <span>
-                    
-                    <>
-                    <FiDelete size={22} onClick={()=>deletarProduto(p.id)}/>
-                    <FiCheckCircle size={22} onClick={()=>atualizaPoduto(p.id)}/>
-                    </>
-               
-                </span>
-                
-                </div>
-            
-            ))}
-            </Tasks>
-        </div>
-    
-  );
+    <Container>
+      <h1>Controle de Produtos</h1>
+      <Modal_ 
+        button={
+          <button className="btnCadastrar"> 
+            Cadastrar
+            <MdAddCircleOutline size={20} style={{marginLeft: 5}}/> 
+          </button>} 
+      />
+      <TabelaProduto produtos={produtos} />
+    </Container>
+  )
 }
 
 export default CrudProdutos

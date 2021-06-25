@@ -3,16 +3,14 @@ import styled from 'styled-components';
 export const Produto = styled.div`
 
     background-color: #3a5ca5;
-    margin-top: 40px;
+    margin-top: 20px;
     width: 220px;
-    height:300px;
+    height:355px;
     margin-bottom: 40px;
-    margin-top: 50px;
+    margin-top: 30px;
     padding-top: 2px;
     padding-bottom: 5px;
     border-radius:5px;
-
-
 
         .info{
             display: block;
@@ -25,18 +23,32 @@ export const Produto = styled.div`
             }
             h3{
                 color: #4d4d4d;
+                max-height: 30px;
             }
+
             img{
                 max-width: 100%;
                 max-height: 180px;
-             }
+                transition: 0.2s;
+
+                &:hover{
+                   padding-top: 4px;
+                }
+             }  
         }
-            .info2{
+
+        .comprar{
             margin-top: 5%;
             font-weight: bold;
             color: #424242;
             font-size: 18px;
             max-width: 100%;
+
+            button{
+                width: 120px;
+                height: 25px;
+                margin-top: 7px;
+            }
         }
 
     div{
@@ -45,10 +57,5 @@ export const Produto = styled.div`
         border-radius: 5px;
         text-align: center;
         margin: 3%;
-        
-     
-
     }
-
-
 `;
