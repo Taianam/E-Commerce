@@ -104,7 +104,7 @@ export default function SignInSide() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link to="/Cadastro" variant="body2" className={classes.link}>
+                <Link to="/cadastroPessoa" variant="body2" className={classes.link}>
                   {"Não tem uma conta? Cadastre-se!"}
                 </Link>
               </Grid>
