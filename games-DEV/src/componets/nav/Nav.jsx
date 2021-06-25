@@ -59,6 +59,7 @@ export default function CustomizedBreadcrumbs(props) {
           href="#"
           label="Sair 🚪" />
       </Link>
+
       <Carrinho total={props.carrinho} />
     </Breadcrumbs>
   );
