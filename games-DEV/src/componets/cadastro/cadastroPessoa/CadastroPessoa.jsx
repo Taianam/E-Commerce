@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { makeStyles } from "@material-ui/core/styles";
+import styled from "styled-components";
+import api from '../../../service/api';
+import {makeStyles} from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import {Link} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import styled from "styled-components";
 
 const Estilo = styled.div`
     border-radius: 0.8rem;
     background: rgba( 225, 225, 255, 0.5);
-    color: black;`;
+    color: black;`
 
 
-  const useStyles = makeStyles((theme) => ({
+    const useStyles = makeStyles((theme) => ({
       root: {
         flexGrow: 1,
       },
@@ -25,59 +26,50 @@ const Estilo = styled.div`
         textAlign: 'center',
         color: theme.palette.text.secondary,
       },
-      link: {
-        textDecoration: 'none',
-        color:'#757575'
-      },
-      h2:{
-        textAlign: 'center'
-      }
     }));
     
-export default function CustomizedInputs() {
-
-    const [newNome, setNewNome] = useState('');
-    const [newDataDeNascimento, setNewDataDeNascimento] = useState('');
-    const [newTelefone, setNewTelefone] = useState('');
-    const [newCpf, setNewCpf] = useState('');
-    const [newEmail, setNewEmail] = useState('');
-    const [newSenha, setNewSenha] = useState('');
-    const [newCep, setNewCep] = useState('');
-  
-    const cliente = {
-        nome: newNome,
-        dataDeNascimento: newDataDeNascimento,
-        telefone: newTelefone,
-        cpf: newCpf,
-        email: newEmail,
-        senha: newSenha,
-        endereco: {
-            cep: newCep,
-        }
-      };
-  
-    const handleSubmit = (event) =>{ 
-          event.preventDefault()
-          api.post(`/clientes`, cliente).then(() => {
-          setNewNome(" ");
-          setNewDataDeNascimento(" ");
-          setNewTelefone(" ");
-          setNewCpf(" ");
-          setNewEmail(" ");
-          setNewSenha(" ");
-          setNewCep(" ");
-      })
-    }
-
+export default function CadastroCliente() {
   const classes = useStyles();
 
+  const [newNome, setNewNome] = useState('');
+  const [newDataDeNascimento, setNewDataDeNascimento] = useState('');
+  const [newTelefone, setNewTelefone] = useState('');
+  const [newCpf, setNewCpf] = useState('');
+  const [newEmail, setNewEmail] = useState('');
+  const [newSenha, setNewSenha] = useState('');
+  const [newCep, setNewCep] = useState('');
+
+  const cliente = {
+      nome: newNome,
+      dataDeNascimento: newDataDeNascimento,
+      telefone: newTelefone,
+      cpf: newCpf,
+      email: newEmail,
+      senha: newSenha,
+      endereco: {
+          cep: newCep,
+      }
+    };
+
+  const handleSubmit = (event) =>{ 
+        event.preventDefault()
+        api.post(`/clientes`, cliente).then(() => {
+        setNewNome(" ");
+        setNewDataDeNascimento(" ");
+        setNewTelefone(" ");
+        setNewCpf(" ");
+        setNewEmail(" ");
+        setNewSenha(" ");
+        setNewCep(" ");
+    })
+  }
 
   return (
     <form autoComplete="off" onSubmit={handleSubmit} className={classes.root} noValidate>
         
         <Estilo>
             <div>   
-                <h1 className={classes.h2}>Cadastro</h1>
+                <h1>Cadastro</h1>
                 
                 <Grid item xs={12}>
                   <Paper className={classes.paper}><TextField className={classes.margin} required id="standard-nome-input" 
@@ -159,11 +151,11 @@ export default function CustomizedInputs() {
                 </Grid>
 
                 <Grid item xs={12}>
-                  <Paper className={classes.paper}><Link to="/home" className={classes.link} onSubmit={handleSubmit} >
+                  <Paper className={classes.paper}>
                   <Button variant="contained" color="primary" >
                     Cadastrar
                   </Button>
-                </Link></Paper>
+                </Paper>
                 </Grid>
 
                 
