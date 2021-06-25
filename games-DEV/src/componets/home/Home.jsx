@@ -4,6 +4,7 @@ import { Container,Nav } from './Styles.jsx';
 import Card from '../card/Card';
 import api from '../../service/api';
 import Footer from '../footer/footer';
+
 // import Slide from '../carrossel/Slide'
 
 

@@ -123,7 +123,7 @@ export default function CustomizedInputs() {
         onChange={cep => setNewCep(cep.target.value)}
       />
 
-      <button type='submit'>Enviar</button>
+      <button type='submit' >Enviar</button>
     </form>
   );
 }
