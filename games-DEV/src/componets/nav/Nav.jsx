@@ -41,14 +41,26 @@ export default function CustomizedBreadcrumbs(props) {
           onClick={handleClick}
         />
       </Link>
-      <StyledBreadcrumb component="a" href="#" label="Produtos 🕹️ " onClick={handleClick} />
-      <StyledBreadcrumb
-        label="Outros 🏁"
-        deleteIcon={<ExpandMoreIcon />}
-        onClick={handleClick}
-        onDelete={handleClick}
-      />
+      <Link to="/controle/produtos">
+        <StyledBreadcrumb
+          component="a" 
+          href="#" 
+          label="Produtos :joystick: "  />
+      </Link>
+      <Link to="/cadastroPessoa">
+        <StyledBreadcrumb
+          component="a"
+          href="#"
+          label="Cadastro :mage:"  />
+      </Link>
+      <Link to="/">
+        <StyledBreadcrumb
+          component="a"
+          href="#"
+          label="Sair :door:" />
+      </Link>
       <Carrinho total={props.carrinho} />
     </Breadcrumbs>
   );
 }
+
