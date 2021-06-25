@@ -5,6 +5,7 @@ import Home from '../componets/home/Home';
 import CadastroPessoa from '../componets/cadastro/cadastroPessoa/CadastroPessoa'
 import CrudProdutos from '../componets/controles/produtos/CrudProdutos';
 import ControleFuncionario from '../componets/controles/funcionarios/ControleFuncionario';
+import Notfound from '../componets/notfound/paginaNotFound/Notfound';
 
 function Rotas() {
 	return (
@@ -23,6 +24,9 @@ function Rotas() {
 			</Route>
 			<Route path="/controle/funcionario" exact>
 				<ControleFuncionario />
+			</Route>
+			<Route path="/**" exact>
+				<Notfound/>
 			</Route>
 		</Switch>
 	)

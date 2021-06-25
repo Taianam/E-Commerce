@@ -11,8 +11,5 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
 
-  button{
-    border: 0;
-
-  }
+  
 `; 

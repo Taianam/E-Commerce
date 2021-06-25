@@ -15,6 +15,7 @@ h1{
     .btnCadastrar{
       width: 170px;
       height: 30px;
+      margin-left: 40px;
       border: 0;
       outline: none;
       background-color: #6380be;

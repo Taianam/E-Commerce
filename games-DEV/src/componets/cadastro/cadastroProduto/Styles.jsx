@@ -22,9 +22,18 @@ export const Container = styled.div`
   }
 
   .botao{
-    width: 100px;
-    height: 20px;
-    background-color:#9eabc9 ;
+    width: 400px;
+    height: 35px;
+    border: 0;
+    margin-top: 5px;
+    color: #333;
+    font-size: 17px;
+    background-color:#a9c0f1 ;
+    transition: 0.2s;
+
+    &:hover{
+      opacity: 0.7;
+    }
   }
 
 

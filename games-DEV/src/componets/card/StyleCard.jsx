@@ -5,7 +5,7 @@ export const Produto = styled.div`
     background-color: #3a5ca5;
     margin-top: 20px;
     width: 220px;
-    height:355px;
+    height:370px;
     margin-bottom: 40px;
     margin-top: 30px;
     padding-top: 2px;
@@ -44,6 +44,14 @@ export const Produto = styled.div`
             font-size: 18px;
             max-width: 100%;
 
+            .qtd{
+                font-size: 10px;
+            }
+
+            .notqtd{
+                font-size: 10px;
+                color: red;
+            }
             button{
                 width: 120px;
                 height: 25px;

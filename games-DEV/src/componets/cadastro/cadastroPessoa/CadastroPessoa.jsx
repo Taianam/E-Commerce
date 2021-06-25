@@ -7,8 +7,6 @@ import {useHistory} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import CustomizedBreadcrumbs from '../../nav/Nav'
-import { Container, Nav, Filtro } from '../../home/Styles';
 
 const Estilo = styled.div`
     border-radius: 0.8rem;
@@ -27,6 +25,9 @@ const Estilo = styled.div`
         textAlign: 'center',
         color: theme.palette.text.secondary,
       },
+      h1: {
+        textAlign: 'center'
+      }
     }));
     
 export default function CadastroPessoa() {
@@ -40,7 +41,13 @@ export default function CadastroPessoa() {
   const [newSenha, setNewSenha] = useState('');
   const [newCep, setNewCep] = useState('');
 
-  const cliente = {
+  
+  
+  let history = useHistory();
+  
+  const handleSubmit = (e) =>{ 
+    e.preventDefault()
+    const cliente = {
       nome: newNome,
       dataDeNascimento: newDataDeNascimento,
       telefone: newTelefone,
@@ -51,13 +58,11 @@ export default function CadastroPessoa() {
           cep: newCep,
       }
     };
-  
-  let history = useHistory();
-  
-  const handleSubmit = (event) =>{ 
-        event.preventDefault()
-        api.post(`/clientes`, cliente).then(() => {
+
+    console.log(cliente)
+
         
+        api.post(`/clientes`, cliente).then(() => {
         history.push("/home")
 
     })
@@ -71,7 +76,7 @@ export default function CadastroPessoa() {
         
         <Estilo>
             <div>   
-                <h1>Cadastro</h1>
+                <h1 className={classes.h1}>Cadastro</h1>
                 
                 <Grid item xs={12}>
                   <Paper className={classes.paper}><TextField className={classes.margin} required id="standard-nome-input" 

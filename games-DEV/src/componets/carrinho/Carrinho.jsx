@@ -13,6 +13,7 @@ function Carrinho(props) {
     verticalAlign: "baseline",
     borderRadius: ".25rem",
     backgroundColor: "#3A5CA5",
+    color: "white"
   };
 
   return (

@@ -6,6 +6,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Link } from 'react-router-dom';
 import Carrinho from '../carrinho/Carrinho'
+import styled from "styled-components";
 
 const StyledBreadcrumb = withStyles((theme) => ({
   root: {
@@ -22,36 +23,38 @@ const StyledBreadcrumb = withStyles((theme) => ({
       backgroundColor: emphasize(theme.palette.grey[300], 0.12),
     },
   },
+
 }))(Chip); // TypeScript only: need a type cast here because https://github.com/Microsoft/TypeScript/issues/26591
 
+const Barra = styled(Link) `
+    text-decoration: none;`
 
 export default function CustomizedBreadcrumbs(props) {
   return (
     <Breadcrumbs aria-label="breadcrumb">
-      <Link to="/home">
+      <Link style={{textDecoration: 'none'}} to="/home">
         <StyledBreadcrumb
           label="Home 🎮"
           icon={<HomeIcon fontSize="small" />}
         />
       </Link>
-      <Link to="/controle/produtos">
+      <Link  style={{textDecoration: 'none'}}  to="/controle/produtos">
         <StyledBreadcrumb
           label="Produtos 🕹️ "  />
       </Link>
-      <Link to="/cadastroPessoa">
+      <Link style={{textDecoration: 'none'}}  to="/cadastroPessoa">
         <StyledBreadcrumb
           label="Cadastro 🧙"  />
       </Link>
-      <Link to="/controle/funcionario">
+      <Link style={{textDecoration: 'none'}}  to="/controle/funcionario">
         <StyledBreadcrumb
           label="Funcionários 🤖"
           />
       </Link>
-      <Link to="/">
-        <StyledBreadcrumb
-          label="Sair 🚪" />
-      </Link>
-    
+      <Link style={{textDecoration: 'none'}} to="/">
+          <StyledBreadcrumb
+            label="Sair 🚪" />
+      </Link >
       <Carrinho total={props.carrinho} />
     </Breadcrumbs>
   );

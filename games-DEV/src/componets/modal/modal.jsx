@@ -48,7 +48,7 @@ function Modal_(props) {
       <button 
         type="button" 
         onClick={handleOpen}
-        style={{border: 0}}>
+        style={{border: 0, background: 'transparent'}}>
         {props.button}
       </button>
       <Modal
