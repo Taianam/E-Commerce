@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 const StyledBreadcrumb = withStyles((theme) => ({
   root: {
   
-    backgroundColor: '#7b99db',
+    backgroundColor: '#ffffff',
     height: theme.spacing(3),
     color: theme.palette.grey[800],
     fontWeight: theme.typography.fontWeightRegular,

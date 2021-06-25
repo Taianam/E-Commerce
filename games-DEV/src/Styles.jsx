@@ -1,6 +1,7 @@
 import {createGlobalStyle} from 'styled-components';
 
 export default createGlobalStyle`
+
     *{
         margin: 0;
         padding: 0;
@@ -10,9 +11,9 @@ export default createGlobalStyle`
 
     body{
         margin: 0;
+        width: 100%;
     }
-   
-   
+
     button{
         cursor: pointer;
     }
