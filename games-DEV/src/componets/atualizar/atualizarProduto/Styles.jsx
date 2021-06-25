@@ -14,7 +14,7 @@ export const Container = styled.div`
     border: 1px solid #ccc;
     margin: 7px 0;
     height: 35px;
-    font-size: 15px;
+    font-size: 17px;
   }
 
   .myswal2 {
@@ -22,8 +22,8 @@ export const Container = styled.div`
   }
 
   .botao{
-    width: 100px;
-    height: 20px;
+    width: 30%;
+    height: 40px;
     background-color:#9eabc9 ;
   }
 

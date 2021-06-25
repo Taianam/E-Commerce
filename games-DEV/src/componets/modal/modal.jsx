@@ -45,7 +45,10 @@ function Modal_(props) {
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
+      <button 
+        type="button" 
+        onClick={handleOpen}
+        style={{border: 0}}>
         {props.button}
       </button>
       <Modal

@@ -1,24 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import api from '../../../service/api';
 import { Container } from './Styles';
 import Swal from 'sweetalert2'
 import 'sweetalert2/dist/sweetalert2.all';
 import Loading from '../../loading/loading'
 
-function CadastroProduto({categoria, obterProduto}) {
+function AtualizarProduto({produto, obterProduto}) {
 
-  const [newNome, setNewNome] = useState();
-  const [newDescricao, setNewDescricao] = useState();
-  const [newEstoque, setNewEstoque] = useState();
-  const [newPreco, setNewPreco] = useState();
-  const [newIDCategoria, setNewIDCategoria] = useState();
-  const [newDataDeCadastro, setNewDataDeCadastro] = useState();
-  const [newImagem, setNewImagem] = useState();
+  const [newNome, setNewNome] = useState(produto.nome);
+  const [newDescricao, setNewDescricao] = useState(produto.descricao);
+  const [newEstoque, setNewEstoque] = useState(produto.estoque);
+  const [newPreco, setNewPreco] = useState(produto.preco);
+  const [newIDCategoria, setNewIDCategoria] = useState(produto.categoria.id);
+  const [newDataDeCadastro, setNewDataDeCadastro] = useState(produto.dataDeCadastro);
+  const [newImagem, setNewImagem] = useState(produto.imagem);
+  const [categoria, setCategoria] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const salvarProduto = (e) => {
+  useEffect(()=>{
+    obterCategoria()
+  },[])
+
+  const obterCategoria = () => {
+    api.get(`/categorias`).then((response) => {
+      console.log(response.status);
+      console.log(response.data);
+      setCategoria(response.data)
+    })
+  }
+
+  const atualizarProduto = (e) => {
     e.preventDefault();
     setLoading(true)
+
     const objProduto = {
       nome: newNome,
       descricao: newDescricao,
@@ -26,14 +40,17 @@ function CadastroProduto({categoria, obterProduto}) {
       preco: newPreco,
       dataDeCadastro: newDataDeCadastro,
       imagem: newImagem,
+      categoria: {
+        id: newIDCategoria
+      }
     }
    
-    api.post(`/produtos/${newIDCategoria}`, objProduto)
+    api.put(`/produtos/${produto.id}`, objProduto)
     .then(() => {
       limparInputs();
       obterProduto();
       setLoading(false);
-      Swal.fire('Cadastro realizado com sucesso!')
+      Swal.fire('Produto atulizado com sucesso!')
     })
     .catch((error)=>{
       setLoading(false);
@@ -41,7 +58,7 @@ function CadastroProduto({categoria, obterProduto}) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Erro ao cadastrar o produto'
+        text: 'Erro ao atulizar o produto'
       })
     });
   }
@@ -60,7 +77,7 @@ function CadastroProduto({categoria, obterProduto}) {
       {loading && 
         <Loading />
       }
-      <form onSubmit={salvarProduto}>
+      <form onSubmit={atualizarProduto}>
         <input
           type="text"
           value={newNome}
@@ -74,10 +91,10 @@ function CadastroProduto({categoria, obterProduto}) {
           onChange={e => setNewDescricao(e.target.value)}
         />
         <select onChange={e=> setNewIDCategoria(e.target.value)}>
-          <option> Selecione uma categoria </option>
-          {categoria.map((c)=>
-           <option value={c.id}> {c.nome} </option>)}
-        </select>
+          <option> Selecione a categoria </option>
+           {categoria.map((c)=>
+           <option key={c.id} value={c.id}> {c.nome} </option>)} 
+        </select> 
         <input
           type="text"
           value={newEstoque}
@@ -103,7 +120,7 @@ function CadastroProduto({categoria, obterProduto}) {
           onChange={e => setNewImagem(e.target.value)}
         />
         <div>
-        <button type="submit" className="botao"> Salvar </button>
+        <button type="submit" className="botao"> Atualizar </button>
         </div>
     
       </form>
@@ -111,4 +128,4 @@ function CadastroProduto({categoria, obterProduto}) {
   )
 }
 
-export default CadastroProduto;
+export default AtualizarProduto;

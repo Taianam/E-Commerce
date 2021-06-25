@@ -1,85 +1,57 @@
-
 import React, { useEffect, useState } from 'react'
 import api from '../../../service/api'
-import TabelaProduto from './TabelaCliente'
+import TabelaFuncionario from './TabelaFuncionario'
 import Modal_ from '../../modal/modal';
-import { MdAddCircleOutline} from 'react-icons/md';
+import { MdAddCircleOutline } from 'react-icons/md';
 import { Container, Nav } from './Styles';
 import CadastraProduto from '../../cadastro/cadastroProduto/CadastroProduto'
 import CustomizedBreadcrumbs from '../../nav/Nav'
 import Footer from '../../footer/footer';
+import Loading from '../../loading/loading';
 
-function ControleFuncionario(){
-    const [clientes, setClientes] = useState('');
-    const [newNome, setNewNome] = useState('');
-    const [newDataDeNascimento, setNewDataDeNascimento] = useState('');
-    const [newTelefone, setNewTelefone] = useState('');
-    const [newCpf, setNewCpf] = useState('');
-    const [newEmail, setNewEmail] = useState('');
-    const [newSenha, setNewSenha] = useState('');
-    const [newCep, setNewCep] = useState('');
+function ControleFuncionario() {
 
-    const ControleClientes = {
-        nome: newNome,
-        dataDeNascimento: newDataDeNascimento,
-        telefone: newTelefone,
-        cpf: newCpf,
-        email: newEmail,
-        senha: newSenha,
-        endereco: {
-            cep: newCep,
+  const [clientes, setClientes] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    obterCliente()
+  }, [])
+
+  const obterCliente = () => {
+    setLoading(true)
+    api.get("/clientes")
+    .then((response) => {
+      console.log(response.status);
+      console.log(response.data);
+      setClientes(response.data);
+      setLoading(false)
+    })
+    .catch((error)=>{
+      console.log(error)
+      setLoading(false)
+    })
+  }
+
+  const atualizaCliente = (id) => {
+    api.put(`/clientes/${id}`).then(() => {
+      obterCliente();
+    })
+  }
+
+  return (
+    <>
+      <Nav>  <CustomizedBreadcrumbs /></Nav>
+      <Container>
+        {loading &&
+          <Loading />
         }
-      };
-  
-    useEffect (() => {obterClientes()}, [])
-
-    const obterCliente = () =>{
-        api.get("/clientes").then((response) =>{
-            console.log(response.status);
-            console.log(response.data);
-            setClientes(response.data);
-        })
-    }
-
-    React.useEffect(obterClienter(), []);
-
-    const atualizaCliente = (id) => {
-        api.put(`/clientes/${id}`).then(() => {
-            obterCliente();
-        })
-    }
-
-    const deletarCliente = (id) => {
-        api.delete(`/clientes/${id}`).then(() => {
-            obterCliente();
-        })
-    }
-
-    return (
-
-               <>
-           <Nav>  <CustomizedBreadcrumbs  /></Nav>
-            <Container>
-            
-              <h1>Controle de Funcionario</h1>
-              <Modal_ 
-                button={
-                  <button className="btnCadastrar"> 
-                    Cadastrar
-                    <MdAddCircleOutline size={20} style={{marginLeft: 5}}/> 
-                  </button>} 
-                content={
-                  <CadastraProduto 
-                  categoria={categoria}
-                  obterProduto={obterProduto}
-                  />
-                }
-              />
-              <TabelaProduto produtos={produtos} />
-              <Footer />
-            </Container>
-            </>
-          )
+        <h1>Controle de Funcionario</h1>
+        <TabelaFuncionario clientes={clientes} obterCliente={obterCliente} />
+        <Footer />
+      </Container>
+    </>
+  )
 }
 
 export default ControleFuncionario

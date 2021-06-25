@@ -42,13 +42,11 @@ export default function CustomizedBreadcrumbs(props) {
         <StyledBreadcrumb
           label="Cadastro 🧙"  />
       </Link>
-      <Link to="/home">
+      <Link to="/controle/funcionario">
         <StyledBreadcrumb
-          component="a"
-          href="#"
           label="Funcionários 🤖"
           />
-          </Link>
+      </Link>
       <Link to="/">
         <StyledBreadcrumb
           label="Sair 🚪" />
