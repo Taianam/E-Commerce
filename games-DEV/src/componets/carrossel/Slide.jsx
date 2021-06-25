@@ -3,15 +3,15 @@ import {Carousel} from '3d-react-carousal';
 import './slide.css'
 
 let slides = [
-    <img  src="https://picsum.photos/800/300/?random" alt="1" />,
-    <img  src="https://picsum.photos/800/301/?random" alt="2" />  ,
-    <img  src="https://picsum.photos/800/302/?random" alt="3" />  ,
-    <img  src="https://picsum.photos/800/303/?random" alt="4" />  ,
+    <img  src="../../assets/playStation2.JPG" alt="1" />,
+    <img  src="../../assets/Xbox.JPG" alt="2" />  ,
+    <img  src="../../assets/ratchet.JPG" alt="3" />  ,
+    <img  src="../../assets/zelda.JPG" alt="4" />  ,
     <img  src="https://picsum.photos/800/304/?random" alt="5" />   ];
 
 function Slide() {
     return (
-    <Carousel slides={slides} autoplay={true} interval={1000}/>
+    <Carousel slides={slides} autoplay={true} interval={4000}/>
     )
 }
 

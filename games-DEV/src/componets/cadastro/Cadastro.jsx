@@ -5,14 +5,15 @@ import {Link} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import styled from "styled-components";
 
 const Estilo = styled.div`
     border-radius: 0.8rem;
     background: rgba( 225, 225, 255, 0.5);
-    color: black;`
+    color: black;`;
 
 
-    const useStyles = makeStyles((theme) => ({
+  const useStyles = makeStyles((theme) => ({
       root: {
         flexGrow: 1,
       },
@@ -24,6 +25,13 @@ const Estilo = styled.div`
         textAlign: 'center',
         color: theme.palette.text.secondary,
       },
+      link: {
+        textDecoration: 'none',
+        color:'#757575'
+      },
+      h2:{
+        textAlign: 'center'
+      }
     }));
     
 export default function CustomizedInputs() {
@@ -69,7 +77,7 @@ export default function CustomizedInputs() {
         
         <Estilo>
             <div>   
-                <h1>Cadastro</h1>
+                <h1 className={classes.h2}>Cadastro</h1>
                 
                 <Grid item xs={12}>
                   <Paper className={classes.paper}><TextField className={classes.margin} required id="standard-nome-input" 
@@ -151,7 +159,7 @@ export default function CustomizedInputs() {
                 </Grid>
 
                 <Grid item xs={12}>
-                  <Paper className={classes.paper}><Link to="/home" className={classes.link} >
+                  <Paper className={classes.paper}><Link to="/home" className={classes.link} onSubmit={handleSubmit} >
                   <Button variant="contained" color="primary" >
                     Cadastrar
                   </Button>
