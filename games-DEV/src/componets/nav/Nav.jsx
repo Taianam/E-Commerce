@@ -5,6 +5,7 @@ import Chip from '@material-ui/core/Chip';
 import HomeIcon from '@material-ui/icons/Home';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Link } from 'react-router-dom';
+import Carrinho from '../carrinho/Carrinho'
 
 const StyledBreadcrumb = withStyles((theme) => ({
   root: {
@@ -28,7 +29,7 @@ function handleClick(event) {
   console.info('You clicked a breadcrumb.');
 }
 
-export default function CustomizedBreadcrumbs() {
+export default function CustomizedBreadcrumbs(props) {
   return (
     <Breadcrumbs aria-label="breadcrumb">
       <Link to="/home">
@@ -47,6 +48,7 @@ export default function CustomizedBreadcrumbs() {
         onClick={handleClick}
         onDelete={handleClick}
       />
+      <Carrinho total={props.carrinho} />
     </Breadcrumbs>
   );
 }

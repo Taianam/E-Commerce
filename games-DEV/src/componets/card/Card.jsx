@@ -5,7 +5,8 @@ import { Produto } from './StyleCard'
 
 function Card(props) {
 
-  const { nome, descricao, preco, estoque, imagem } = props.produto;
+  const {id, nome, descricao, preco, estoque, imagem } = props.produto;
+
 
   return (
 
@@ -17,7 +18,7 @@ function Card(props) {
       </div>
       <div className="comprar">
         <p>Preço: {preco}</p>
-        <button type="button">Comprar</button>
+        <button type="button" onClick={() => props.comprar(id)}>Comprar</button>
       </div>
     </Produto>
   )
